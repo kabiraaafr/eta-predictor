@@ -16,6 +16,18 @@ if not hasattr(_ct, "_RemainderColsList"):
 
   _ct._RemainderColsList = _RemainderColsList
 
+import sklearn.compose._column_transformer as _ct
+from sklearn.impute import SimpleImputer
+
+if not hasattr(_ct, "_RemainderColsList"):
+
+  class _RemainderColsList(list):
+    pass
+
+  _ct._RemainderColsList = _RemainderColsList
+
+if not hasattr(SimpleImputer, "_fill_dtype"):
+  SimpleImputer._fill_dtype = property(lambda self: self.statistics_.dtype)
 # -----------------------------------------------------------------------------
 # Page Config & Custom Styling
 # -----------------------------------------------------------------------------
