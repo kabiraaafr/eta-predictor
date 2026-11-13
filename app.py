@@ -7,6 +7,14 @@ import numpy as np
 import pandas as pd
 import pydeck as pdk
 import streamlit as st
+import sklearn.compose._column_transformer as _ct
+
+if not hasattr(_ct, "_RemainderColsList"):
+
+  class _RemainderColsList(list):
+    pass
+
+  _ct._RemainderColsList = _RemainderColsList
 
 # -----------------------------------------------------------------------------
 # Page Config & Custom Styling
